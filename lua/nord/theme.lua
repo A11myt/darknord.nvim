@@ -304,7 +304,7 @@ theme.loadTreeSitter = function()
 		["@type"] = { fg = nord.nord9_gui },
 		["@type.builtin"] = { fg = nord.nord9_gui },
 		["@tag"] = { fg = nord.nord4_gui },
-		["@tag.delimiter"] = { fg = nord.nord15_gui },
+		["@tag.delimiter"] = { fg = nord.nord9_gui },
 		["@text"] = { fg = nord.nord4_gui },
 		["@text.reference"] = { fg = nord.nord15_gui, style = bold },
 		["@text.emphasis"] = { fg = nord.nord10_gui, style = italic },
