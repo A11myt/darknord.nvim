@@ -7,7 +7,7 @@ local italic_undercurl = vim.g.nord_italic == false and "undercurl" or "italic,u
 local bold = vim.g.nord_bold == false and nord.none or "bold"
 local reverse_bold = vim.g.nord_bold == false and "reverse" or "reverse,bold"
 local bold_underline = vim.g.nord_bold == false and "underline" or "bold,underline"
-local bold_italic;
+local bold_italic
 if vim.g.nord_bold == false then
 	bold_italic = vim.g.nord_italic == false and nord.none or "italic"
 elseif vim.g.nord_italic == false then
@@ -18,13 +18,28 @@ end
 
 theme.loadSyntax = function()
 	-- Syntax highlight groups
+	-- 1 black
+	-- 2 dark_gray
+	-- 3 gray
+	-- 4 light_gray
+	-- 5 light_gray_bright
+	-- 6 darkest_white
+	-- 7 darker_white
+	-- 8 white
+	-- 9 teal
+	-- 10 off_blue
+	-- 11 red
+	-- 12 orange
+	-- 13 yellow
+	-- 14 green
+	-- 15 purple
 	return {
 		Type = { fg = nord.nord9_gui }, -- int, long, char, etc.
 		StorageClass = { fg = nord.nord9_gui }, -- static, register, volatile, etc.
 		Structure = { fg = nord.nord9_gui }, -- struct, union, enum, etc.
 		Constant = { fg = nord.nord4_gui }, -- any constant
 		Character = { fg = nord.nord14_gui }, -- any character constant: 'c', '\n'
-		Number = { fg = nord.nord15_gui }, -- a number constant: 5
+		Number = { fg = nord.nord11_gui }, -- a number constant: 5
 		Boolean = { fg = nord.nord9_gui }, -- a boolean constant: TRUE, false
 		Float = { fg = nord.nord15_gui }, -- a floating point constant: 2.3e10
 		Statement = { fg = nord.nord9_gui }, -- any statement
@@ -261,10 +276,10 @@ theme.loadTreeSitter = function()
 		TSSymbol = { fg = nord.nord15_gui }, -- For identifiers referring to symbols or atoms.
 		TSType = { fg = nord.nord9_gui }, -- For types.
 		TSTypeBuiltin = { fg = nord.nord9_gui }, -- For builtin types.
-		TSTag = { fg = nord.nord4_gui }, -- Tags like html tag names.
-		TSTagDelimiter = { fg = nord.nord15_gui }, -- Tag delimiter like `<` `>` `/`
+		TSTag = { fg = nord.nord9_gui }, -- Tags like html tag names.
+		TSTagDelimiter = { fg = nord.nord9_gui }, -- Tag delimiter like `<` `>` `/`
 		TSText = { fg = nord.nord4_gui }, -- For strings considenord11_gui text in a markup language.
-		TSTextReference = { fg = nord.nord15_gui }, -- FIXME
+		TSTextReference = { fg = nord.nord9_gui }, -- FIXME
 		TSEmphasis = { fg = nord.nord10_gui }, -- For text to be represented with emphasis.
 		TSUnderline = { fg = nord.nord4_gui, bg = nord.none, style = "underline" }, -- For text to be represented with an underline.
 		TSLiteral = { fg = nord.nord4_gui }, -- Literal text.
@@ -494,7 +509,7 @@ theme.loadPlugins = function()
 		TelescopePreviewBorder = { fg = nord.nord4_gui },
 		TelescopeSelectionCaret = { fg = nord.nord9_gui },
 		TelescopeSelection = { fg = nord.nord6_gui, bg = nord.nord2_gui },
-		TelescopeMatching = { link = 'Search' },
+		TelescopeMatching = { link = "Search" },
 
 		-- NvimTree
 		NvimTreeRootFolder = { fg = nord.nord15_gui },
@@ -505,7 +520,7 @@ theme.loadPlugins = function()
 		NvimTreeOpenedFolderName = { fg = nord.nord5_gui },
 		NvimTreeExecFile = { fg = nord.nord4_gui },
 		NvimTreeOpenedFile = { fg = nord.nord6_gui },
-		NvimTreeSpecialFile = { fg = nord.nord4_gui, style = bold},
+		NvimTreeSpecialFile = { fg = nord.nord4_gui, style = bold },
 		NvimTreeImageFile = { fg = nord.nord4_gui },
 		NvimTreeMarkdownFile = { fg = nord.nord4_gui },
 		NvimTreeIndentMarker = { fg = nord.nord9_gui },
@@ -514,7 +529,7 @@ theme.loadPlugins = function()
 		NvimTreeGitMerge = { fg = nord.nord13_gui }, -- diff mode: Changed line |diff.txt|
 		NvimTreeGitRenamed = { fg = nord.nord13_gui }, -- diff mode: Changed line |diff.txt|
 		NvimTreeGitNew = { fg = nord.nord14_gui }, -- diff mode: Added line |diff.txt|
-		NvimTreeGitDeleted = { fg = nord.nord11_gui },	-- diff mode: Deleted line |diff.txt|
+		NvimTreeGitDeleted = { fg = nord.nord11_gui }, -- diff mode: Deleted line |diff.txt|
 		NvimTreeGitIgnored = { fg = nord.nord3_gui_bright },
 		LspDiagnosticsError = { fg = nord.nord12_gui },
 		LspDiagnosticsWarning = { fg = nord.nord15_gui },
@@ -539,11 +554,11 @@ theme.loadPlugins = function()
 		LspFloatWinBorder = { fg = nord.nord4_gui, bg = nord.float },
 		LspSagaDefPreviewBorder = { fg = nord.nord4_gui, bg = nord.float },
 		DefinitionIcon = { fg = nord.nord7_gui },
-		TargetWord = { fg = nord.nord6_gui, style = 'bold' },
+		TargetWord = { fg = nord.nord6_gui, style = "bold" },
 		-- LspSaga code action
-		LspSagaCodeActionTitle = { link = 'Title' },
+		LspSagaCodeActionTitle = { link = "Title" },
 		LspSagaCodeActionBorder = { fg = nord.nord4_gui, bg = nord.float },
-		LspSagaCodeActionTrunCateLine = { link = 'LspSagaCodeActionBorder' },
+		LspSagaCodeActionTrunCateLine = { link = "LspSagaCodeActionBorder" },
 		LspSagaCodeActionContent = { fg = nord.nord4_gui },
 		-- LspSag finder
 		LspSagaLspFinderBorder = { fg = nord.nord4_gui, bg = nord.float },
@@ -551,7 +566,7 @@ theme.loadPlugins = function()
 		LspSagaFinderSelection = { fg = nord.nord6_gui, bg = nord.nord2_gui },
 		TargetFileName = { fg = nord.nord4_gui },
 		FinderParam = { fg = nord.nord15_gui, bold = true },
-		FinderVirtText = { fg = nord.nord15_gui15 , bg = nord.none },
+		FinderVirtText = { fg = nord.nord15_gui15, bg = nord.none },
 		DefinitionsIcon = { fg = nord.nord9_gui },
 		Definitions = { fg = nord.nord15_gui, bold = true },
 		DefinitionCount = { fg = nord.nord10_gui },
@@ -563,46 +578,46 @@ theme.loadPlugins = function()
 		ImplementsCount = { fg = nord.nord10_gui },
 		-- LspSaga finder spinner
 		FinderSpinnerBorder = { fg = nord.nord4_gui, bg = nord.float },
-		FinderSpinnerTitle = { link = 'Title' },
+		FinderSpinnerTitle = { link = "Title" },
 		FinderSpinner = { fg = nord.nord8_gui, bold = true },
-		FinderPreviewSearch = { link = 'Search' },
+		FinderPreviewSearch = { link = "Search" },
 		-- LspSaga definition
 		DefinitionBorder = { fg = nord.nord4_gui, bg = nord.float },
 		DefinitionArrow = { fg = nord.nord8_gui },
-		DefinitionSearch = { link = 'Search' },
+		DefinitionSearch = { link = "Search" },
 		DefinitionFile = { fg = nord.nord4_gui, bg = nord.float },
 		-- LspSaga hover
 		LspSagaHoverBorder = { fg = nord.nord4_gui, bg = nord.float },
-		LspSagaHoverTrunCateLine = { link = 'LspSagaHoverBorder' },
+		LspSagaHoverTrunCateLine = { link = "LspSagaHoverBorder" },
 		-- Lsp rename
 		LspSagaRenameBorder = { fg = nord.nord4_gui, bg = nord.float },
 		LspSagaRenameMatch = { fg = nord.nord6_gui, bg = nord.nord9_gui },
 		-- Lsp diagnostic
-		LspSagaDiagnosticSource = { link = 'Comment' },
-		LspSagaDiagnosticError = { link = 'DiagnosticError' },
-		LspSagaDiagnosticWarn = { link = 'DiagnosticWarn' },
-		LspSagaDiagnosticInfo = { link = 'DiagnosticInfo' },
-		LspSagaDiagnosticHint = { link = 'DiagnosticHint' },
-		LspSagaErrorTrunCateLine = { link = 'DiagnosticError' },
-		LspSagaWarnTrunCateLine = { link = 'DiagnosticWarn' },
-		LspSagaInfoTrunCateLine = { link = 'DiagnosticInfo' },
-		LspSagaHintTrunCateLine = { link = 'DiagnosticHint' },
+		LspSagaDiagnosticSource = { link = "Comment" },
+		LspSagaDiagnosticError = { link = "DiagnosticError" },
+		LspSagaDiagnosticWarn = { link = "DiagnosticWarn" },
+		LspSagaDiagnosticInfo = { link = "DiagnosticInfo" },
+		LspSagaDiagnosticHint = { link = "DiagnosticHint" },
+		LspSagaErrorTrunCateLine = { link = "DiagnosticError" },
+		LspSagaWarnTrunCateLine = { link = "DiagnosticWarn" },
+		LspSagaInfoTrunCateLine = { link = "DiagnosticInfo" },
+		LspSagaHintTrunCateLine = { link = "DiagnosticHint" },
 		LspSagaDiagnosticBorder = { fg = nord.nord4_gui, bg = nord.float },
 		LspSagaDiagnosticHeader = { fg = nord.nord4_gui },
 		DiagnosticQuickFix = { fg = nord.nord14_gui, bold = true },
 		DiagnosticMap = { fg = nord.nord15_gui },
 		DiagnosticLineCol = { fg = nord.nord4_gui },
-		LspSagaDiagnosticTruncateLine = { link = 'LspSagaDiagnosticBorder' },
-		ColInLineDiagnostic = { link = 'Comment' },
+		LspSagaDiagnosticTruncateLine = { link = "LspSagaDiagnosticBorder" },
+		ColInLineDiagnostic = { link = "Comment" },
 		-- LspSaga signture help
 		LspSagaSignatureHelpBorder = { fg = nord.nord4_gui, bg = nord.float },
-		LspSagaShTrunCateLine = { link = 'LspSagaSignatureHelpBorder' },
+		LspSagaShTrunCateLine = { link = "LspSagaSignatureHelpBorder" },
 		-- Lspsaga lightbulb
-		LspSagaLightBulb = { link = 'DiagnosticSignHint' },
+		LspSagaLightBulb = { link = "DiagnosticSignHint" },
 		-- LspSaga shadow
-		SagaShadow = { fg = 'black' },
+		SagaShadow = { fg = "black" },
 		-- LspSaga float
-		LspSagaBorderTitle = { link = 'Title' },
+		LspSagaBorderTitle = { link = "Title" },
 		-- LspSaga Outline
 		LSOutlinePreviewBorder = { fg = nord.nord4_gui, bg = nord.float },
 		OutlineIndentEvn = { fg = nord.nord15_gui },
@@ -692,13 +707,13 @@ theme.loadPlugins = function()
 		rainbowcol7 = { fg = nord.nord13_gui },
 
 		-- rainbow-delimiters.nvim
-                RainbowDelimiterRed = { fg = nord.nord11_gui },
-                RainbowDelimiterYellow = { fg = nord.nord13_gui },
-                RainbowDelimiterBlue = { fg = nord.nord9_gui },
-                RainbowDelimiterOrange = { fg = nord.nord12_gui },
-                RainbowDelimiterGreen = { fg = nord.nord14_gui },
-                RainbowDelimiterCyan = { fg = nord.nord8_gui },
-                RainbowDelimiterViolet = { fg = nord.nord15_gui },
+		RainbowDelimiterRed = { fg = nord.nord11_gui },
+		RainbowDelimiterYellow = { fg = nord.nord13_gui },
+		RainbowDelimiterBlue = { fg = nord.nord9_gui },
+		RainbowDelimiterOrange = { fg = nord.nord12_gui },
+		RainbowDelimiterGreen = { fg = nord.nord14_gui },
+		RainbowDelimiterCyan = { fg = nord.nord8_gui },
+		RainbowDelimiterViolet = { fg = nord.nord15_gui },
 
 		-- lightspeed
 		LightspeedLabel = { fg = nord.nord8_gui, style = bold },
@@ -790,15 +805,13 @@ theme.loadPlugins = function()
 		AerialKeyIcon = { fg = nord.nord9_gui },
 		AerialMethodIcon = vim.g.nord_italic and { fg = nord.nord7_gui, style = italic } or { fg = nord.nord7_gui },
 		AerialModuleIcon = vim.g.nord_italic and { fg = nord.nord4_gui, style = italic } or { fg = nord.nord4_gui },
-		AerialNamespaceIcon = vim.g.nord_italic and { fg = nord.nord4_gui, style = italic }
-			or { fg = nord.nord4_gui },
+		AerialNamespaceIcon = vim.g.nord_italic and { fg = nord.nord4_gui, style = italic } or { fg = nord.nord4_gui },
 		AerialNullIcon = { fg = nord.nord9_gui },
 		AerialNumberIcon = { fg = nord.nord15_gui },
 		AerialObjectIcon = { fg = nord.nord9_gui },
 		AerialOperatorIcon = { fg = nord.nord9_gui },
 		AerialPackageIcon = vim.g.nord_italic and { fg = nord.nord4_gui, style = italic } or { fg = nord.nord4_gui },
-		AerialPropertyIcon = vim.g.nord_italic and { fg = nord.nord4_gui, style = italic }
-			or { fg = nord.nord10_gui },
+		AerialPropertyIcon = vim.g.nord_italic and { fg = nord.nord4_gui, style = italic } or { fg = nord.nord10_gui },
 		AerialStringIcon = vim.g.nord_italic and { fg = nord.nord14_gui, style = italic } or { fg = nord.nord14_gui },
 		AerialStructIcon = { fg = nord.nord9_gui },
 		AerialTypeParameterIcon = { fg = nord.nord10_gui },
